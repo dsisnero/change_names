@@ -1,0 +1,8 @@
+.autotest
+History.txt
+Manifest.txt
+README.txt
+Rakefile
+bin/change_names
+lib/change_names.rb
+test/test_change_names.rb
