@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
+require 'change_names/runner'
 
-abort "you need to write me"
+runner = ChangeNames::Runner.new(ARGV)
+runner.run

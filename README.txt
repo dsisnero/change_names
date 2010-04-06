@@ -1,6 +1,6 @@
 = change_names
 
-* FIX (url)
+
 
 == DESCRIPTION:
 
@@ -11,7 +11,7 @@ This package changes names in a directory tree
 * FIX (list of features or problems)
 
 == SYNOPSIS:
-   change_names -p ~/book
+   change_names -d ~/downloads/books
 
 == REQUIREMENTS:
 
@@ -19,7 +19,7 @@ This package changes names in a directory tree
 
 == INSTALL:
 
-* FIX (sudo gem install, anything else)
+* sudo gem install change_names
 
 == DEVELOPERS:
 
