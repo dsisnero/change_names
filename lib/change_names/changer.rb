@@ -41,7 +41,7 @@ module ChangeNames
         #   filename = filename.sub(\1, 'OReilly')
         # end
         base,ext = [File.basename(filename,'.*'), File.extname(filename)]
-        md = (/^(.+)(apress$|oreilly$|addison\.wesley$|manning$|mcgraw\.hill$)/i).match base
+        md = (/^(.+)(apress$|oreilly$|packt$|addison\.wesley$|manning$|mcgraw\.hill$)/i).match base
         if md
           base = "#{md[2]}.#{md[1]}"
           filename = "#{base}#{ext}"
