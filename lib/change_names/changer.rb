@@ -2,9 +2,8 @@ require 'find'
 require 'fileutils'
 require 'rubygems'
 
-require 'ruby-debug'
 module ChangeNames
-  VERSION = '0.5.0'
+  VERSION = '0.5.2'
 
 
   class Changer
@@ -18,7 +17,7 @@ module ChangeNames
       changer.change
     end
 
-    PUBLISHERS = ['appress','oreilly','manning']
+    PUBLISHERS = ['apress','oreilly','manning']
  
 
     def change_oreilly(file)
@@ -32,16 +31,16 @@ module ChangeNames
       notchanged = []
       
       Find.find(dirname) do |path|
-        #debugger
+ 
         next unless File.file?(path)
-        dir,filename = File.split(path)
+        dir,filename = File.split(path)  
         filename = filename.gsub(/[\s\-_]/, '.').squeeze('.')
         filename = change_oreilly(filename) if filename =~ /reilly/i
         #   #debugger
         #   filename = filename.sub(\1, 'OReilly')
         # end
         base,ext = [File.basename(filename,'.*'), File.extname(filename)]
-        md = (/^(.+)(apress$|oreilly$|packt$|addison\.wesley$|manning$|mcgraw\.hill$)/i).match base
+        md = (/^(.+)(apress$|oreilly$|packt$|addison\.wesley$|wrox$|manning$|mcgraw\.hill|new\.riders|syngress|sitepoint$)/i).match base
         if md
           base = "#{md[2]}.#{md[1]}"
           filename = "#{base}#{ext}"
