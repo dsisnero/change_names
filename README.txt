@@ -8,14 +8,14 @@ This package changes names in a directory tree
 
 == FEATURES/PROBLEMS:
 
-* FIX (list of features or problems)
+
 
 == SYNOPSIS:
    change_names -d ~/downloads/books
 
 == REQUIREMENTS:
 
-* FIX (list of requirements)
+see Rakefile
 
 == INSTALL:
 
