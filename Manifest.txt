@@ -4,7 +4,7 @@ Manifest.txt
 README.txt
 Rakefile
 bin/change_names
+lib/change_names.rb
 lib/change_names/changer.rb
-lib/change_names/options.rb
 lib/change_names/runner.rb
 test/test_change_names.rb
