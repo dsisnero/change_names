@@ -1,8 +1,27 @@
 #!/usr/bin/env ruby
-require 'rubygems' 
-require 'bundler/setup'
+require 'optparse'
+require 'methadone'
+require 'change_names'
 
-require 'change_names/runner'
+class App
+  include Methadone::Main
+  include Methadone::CLILogging
 
-runner = ChangeNames::Runner.new(ARGV)
-runner.run
+  main do
+    ChangeNames::Changer.change_path(options['directory-to-change'])
+  end
+
+  version ChangeNames::Version
+  description 'Changes the names of pdf files to get rid of blank spaces and put the publisher at the front'
+
+  options['directory-to-change'] = File.expand_path("~/downloads/books")
+
+  on("-d DIR", "--directory-to-change",
+     "Set the location of the book directory")
+
+
+  use_log_level_option
+
+  go!
+
+end

@@ -23,13 +23,15 @@ module ChangeNames
 
   class Changer
     include FileUtils::Verbose
+    include Methadone::Main
     include Methadone::CLILogging
 
     def initialize(path= "~/downloads/books")
       @path = Pathname(path).expand_path
+      help_now!("Dir #{@path} not found") unless @path.directory?
     end
 
-    def self.from_path(dir = "~/downloads/books")
+    def self.change_path(dir = "~/downloads/books")
       changer = Changer.new(dir)
       changer.change
     end
@@ -41,7 +43,7 @@ module ChangeNames
       newfile = file.gsub(/o['.]?reilly/i, 'OReilly')
       newfile
     end
-    
+
     def pdf_file?(file_path)
       file_path.file? && file_path.extname == '.pdf'
     end
@@ -87,7 +89,7 @@ module ChangeNames
       else
         file
       end
-    end    
+    end
 
     def split_files_to_change(dir=@path)
       pdf_files = find_pdf_files(dir)
@@ -97,7 +99,7 @@ module ChangeNames
         new_name = change_pdf_file(fn)
         if new_name == fn
           not_changed << new_name
-        else 
+        else
           to_change << [fn,new_name]
         end
 
@@ -122,7 +124,7 @@ module ChangeNames
       end
     end
 
-    
+
 
 
   end
@@ -132,4 +134,3 @@ end
 
     changer = ChangeNames::Changer.from_path("~/downloads/books")
   end
-
